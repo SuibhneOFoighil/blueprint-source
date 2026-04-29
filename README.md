@@ -32,7 +32,19 @@ templates/<n>/                    custom OS image shared across blueprints in th
 roles/<n>/                        local Ansible role shared across blueprints in this source
 ```
 
-Plain galaxy roles like `geerlingguy.docker` need no `requirements.yml` — just list them under `roles:` in `config.yml`. Reach for `requirements.yml` only when you need to pin a version or pull from GitHub/GitLab.
+Plain galaxy roles like `geerlingguy.docker` need no `requirements.yml` — just list them under `roles:` in `config.yml`. Reach for `requirements.yml` only when you need to pin a version or pull from GitHub/GitLab:
+
+```yaml
+# blueprints/<id>/requirements.yml
+roles:
+  - name: geerlingguy.docker
+    version: 7.4.4                                  # pin a galaxy role
+  - name: badsectorlabs.ludus_adcs                  # off-galaxy: name + src
+    src: https://github.com/badsectorlabs/ludus_adcs
+    version: v1.2.0
+```
+
+Names must match what `roles:` in `config.yml` references — that's how Ludus links the install to the play.
 
 ## More
 
