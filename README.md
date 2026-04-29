@@ -48,7 +48,7 @@ Names must match what `roles:` in `config.yml` references — otherwise Ludus in
 
 ### Custom Packer templates
 
-Each `templates/<name>/` directory is a standard Ludus Packer template — the same shape as the [builtin templates](https://gitlab.com/badsectorlabs/ludus/-/tree/main/ludus-server/packer):
+Each `templates/<name>/` directory is a standard Ludus Packer template — the same shape as the [Ludus template catalog](https://gitlab.com/badsectorlabs/ludus/-/tree/main/templates):
 
 ```
 templates/my-debian-base/
