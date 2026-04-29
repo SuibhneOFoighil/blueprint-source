@@ -44,7 +44,7 @@ roles:
     version: v1.2.0
 ```
 
-Names must match what `roles:` in `config.yml` references — that's how Ludus links the install to the play.
+Names must match what `roles:` in `config.yml` references — otherwise Ludus installs one role and tries to use another.
 
 ### Custom Packer templates
 
@@ -52,7 +52,7 @@ Each `templates/<name>/` directory is a standard Ludus Packer template — the s
 
 ```
 templates/my-debian-base/
-  my-debian-base.pkr.hcl   the Packer build (boot, ISO, provisioners)
+  my-debian-base.pkr.hcl   the Packer build config
   http/                    Linux: preseed.cfg / kickstart served at install time
   Autounattend.xml         Windows only: unattended install answer file
 ```
