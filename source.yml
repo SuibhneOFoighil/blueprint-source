@@ -1,0 +1,5 @@
+manifest_version: 1
+name: "My Blueprint Source"
+description: "Short tagline"
+maintainer: "you@example.com"
+homepage: https://github.com/you/repo

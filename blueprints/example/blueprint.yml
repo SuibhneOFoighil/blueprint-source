@@ -1,0 +1,8 @@
+manifest_version: 1
+id: example
+name: "Example"
+description: "Single Debian VM with Docker installed via geerlingguy.docker."
+version: 0.1.0
+author: "you"
+tags: [example]
+config: config.yml
