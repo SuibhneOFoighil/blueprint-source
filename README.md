@@ -65,13 +65,13 @@ Each `roles/<name>/` directory is a standard [Ansible role](https://docs.ansible
 
 ```
 roles/my_helper/
-  tasks/main.yml           required — the role's tasks
+  tasks/main.yml           the role's tasks (typical entry point)
   defaults/main.yml        optional — default variables
   handlers/main.yml        optional — handlers
   meta/main.yml            optional — role metadata, dependencies
 ```
 
-Reference the role by directory name (`my_helper`) under `roles:` in `config.yml`. Local roles take precedence over galaxy roles of the same name.
+Reference the role by directory name (`my_helper`) under `roles:` in `config.yml`. If a local role shares a name with a galaxy role, Ludus skips the galaxy install entirely — only the local role gets installed.
 
 ## More
 
