@@ -1,6 +1,6 @@
 # Ludus Blueprint Source Template
 
-A blueprint source is an external git repo that ships [Ludus](https://docs.ludus.cloud) range configs (blueprints) and the Ansible roles and Packer templates they need. This repo is a starting point for publishing your own.
+A **blueprint source** is an external repo that ships one or more [Ludus](https://docs.ludus.cloud) **blueprints** — range configs plus the Ansible roles and Packer templates they need. One repo, many labs. This template is a starting point for publishing your own.
 
 Click **Use this template**, edit the files below, push, then run:
 
@@ -9,6 +9,8 @@ ludus blueprint source add https://github.com/<you>/<repo>
 ludus blueprint apply <repo>/example
 ludus range deploy
 ```
+
+Any git host works (GitHub, GitLab, self-hosted). You can also feed `source add` a tarball URL or a local directory (`-d ./path`) — see the [docs](https://docs.ludus.cloud/docs/using-ludus/blueprint-sources) for the full list.
 
 ## Files
 
@@ -72,6 +74,28 @@ roles/my_helper/
 ```
 
 Reference the role by directory name (`my_helper`) under `roles:` in `config.yml`. If a local role shares a name with a galaxy role, Ludus skips the galaxy install entirely — only the local role gets installed.
+
+## Required fields
+
+The validator and the server enforce these:
+
+- **`source.yml`** — `manifest_version`. Everything else is optional. The whole file is optional too.
+- **`blueprint.yml`** — `manifest_version`, `id`, `name`, `description`, `version` (semver), `config`. Optional: `author`, `homepage`, `license`, `tags`, `thumbnail`, `min_ludus_version`.
+
+The example files have these annotated inline.
+
+## Versioning
+
+Bump `version` in `blueprint.yml` (semver) any time you change a blueprint and want users to see it as new. Push to your repo, then users run:
+
+```bash
+ludus blueprint source sync <repo>     # pull latest manifests + reinstall any new role deps
+ludus blueprint info <repo>/example    # see the new version
+ludus blueprint apply <repo>/example   # write the new config to their range
+ludus range deploy                     # rebuild
+```
+
+`ludus blueprint apply` always writes whatever's currently in the source — there's no automatic upgrade prompt. The `version` field is for display and changelog purposes; pin it to a git tag (`source update <repo> --ref v1.2.0`) if you need users locked to a specific release.
 
 ## More
 
