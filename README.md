@@ -46,6 +46,33 @@ roles:
 
 Names must match what `roles:` in `config.yml` references — that's how Ludus links the install to the play.
 
+### Custom Packer templates
+
+Each `templates/<name>/` directory is a standard Ludus Packer template — the same shape as the [builtin templates](https://gitlab.com/badsectorlabs/ludus/-/tree/main/ludus-server/packer):
+
+```
+templates/my-debian-base/
+  my-debian-base.pkr.hcl   the Packer build (boot, ISO, provisioners)
+  http/                    Linux: preseed.cfg / kickstart served at install time
+  Autounattend.xml         Windows only: unattended install answer file
+```
+
+After `ludus blueprint source add`, run `ludus templates build` to produce the actual VM image.
+
+### Custom Ansible roles
+
+Each `roles/<name>/` directory is a standard [Ansible role](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html):
+
+```
+roles/my_helper/
+  tasks/main.yml           required — the role's tasks
+  defaults/main.yml        optional — default variables
+  handlers/main.yml        optional — handlers
+  meta/main.yml            optional — role metadata, dependencies
+```
+
+Reference the role by directory name (`my_helper`) under `roles:` in `config.yml`. Local roles take precedence over galaxy roles of the same name.
+
 ## More
 
 Full reference: [Blueprint Sources](https://docs.ludus.cloud/docs/using-ludus/blueprint-sources).
