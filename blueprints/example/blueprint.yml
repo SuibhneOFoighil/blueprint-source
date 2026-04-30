@@ -1,10 +1,10 @@
 # blueprint.yml — display metadata for one blueprint.
 
-manifest_version: 1                                                          # required
+manifest_version: 1                                                          # required — schema version, leave as 1
 id: example                                                                  # required — unique within this source; lowercase, dashes
 name: "Example"                                                              # required — display name
 description: "Single Debian VM with Docker installed via geerlingguy.docker." # required
-version: 0.1.0                                                               # required — semver; bump on any change you want users to see
+version: 0.1.0                                                               # required — your semver; bump on every release
 config: config.yml                                                           # required — path to the range config, relative to this file
 
 author: "you"                                                                # optional

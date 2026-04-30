@@ -86,7 +86,10 @@ The example files have these annotated inline.
 
 ## Versioning
 
-Bump `version` in `blueprint.yml` (semver) any time you change a blueprint and want users to see it as new. Push to your repo, then users run:
+Two separate fields — don't confuse them:
+
+- **`manifest_version`** is the schema version of the manifest file. Ludus bumps it when the format changes incompatibly. Leave it at `1`.
+- **`version`** is *your* semver for the blueprint. Bump it any time you change a blueprint and want users to see it as new. Push to your repo, then users run:
 
 ```bash
 ludus blueprint source sync <repo>     # pull latest manifests + reinstall any new role deps
