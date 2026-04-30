@@ -86,7 +86,7 @@ The example files have these annotated inline.
 
 ## Versioning
 
-Two separate fields — don't confuse them:
+Two separate fields:
 
 - **`manifest_version`** is the schema version of the manifest file. Ludus bumps it when the format changes incompatibly. Leave it at `1`.
 - **`version`** is *your* semver for the blueprint. Bump it any time you change a blueprint and want users to see it as new. Push to your repo, then users run:
