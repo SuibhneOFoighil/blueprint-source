@@ -10,7 +10,7 @@ ludus blueprint apply <repo>/example
 ludus range deploy
 ```
 
-Any git host works (GitHub, GitLab, self-hosted). You can also feed `source add` a tarball URL or a local directory (`-d ./path`) — see the [docs](https://docs.ludus.cloud/docs/using-ludus/blueprint-sources) for the full list.
+Any git host works (GitHub, GitLab, self-hosted). You can also feed `source add` a local tarball/zip (`source add ./source.tar.gz`) or a local directory (`source add -d ./my-source`) — see the [docs](https://docs.ludus.cloud/docs/using-ludus/blueprint-sources) for the full list.
 
 ## Files
 
